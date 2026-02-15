@@ -2,7 +2,7 @@
 
 A **zero-dependency Web Component** to embed Bluesky discussion threads on any website.
 
-- **Lightweight:** < 2kb (gzipped). No heavy SDKs.
+- **Lightweight:** ~3 kB gzipped. No heavy SDKs.
 - **Universal:** Works with any framework — React, Vue, Svelte, Astro, or just plain HTML.
 - **Styleable:** Renders Light DOM (not Shadow DOM) for easy styling via CSS/Tailwind.
 
@@ -16,7 +16,7 @@ Most Bluesky embed libraries fall into two categories: **React Wrappers** (which
 | :------ | :------------ | :-------------------- | :--------------------- |
 | **Input** | **Public URL** OR **AT-URI** | **AT-URI** Only | **AT-URI** Only |
 | **Styling** | **Light DOM** (Use Tailwind/CSS) | CSS Modules / Props | **Shadow DOM** (Locked) |
-| **Engine** | **Native Fetch** (<2kb) | **@atproto/api** (~60kb) | **Lit / Stencil** (~15kb) |
+| **Engine** | **Native Fetch** (~3kb) | **@atproto/api** (~60kb) | **Lit / Stencil** (~15kb) |
 | **Frameworks** | **All** (Universal) | React Only | All |
 
 ### Key Differentiators
