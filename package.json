@@ -47,5 +47,6 @@
   "homepage": "https://github.com/florianschepp/bsky-comments#readme",
   "bugs": {
     "url": "https://github.com/florianschepp/bsky-comments/issues"
-  }
+  },
+  "packageManager": "pnpm@10.28.1"
 }
