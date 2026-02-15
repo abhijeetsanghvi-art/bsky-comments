@@ -1,6 +1,6 @@
 {
   "name": "bsky-comments",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A zero-dependency Web Component to embed Bluesky discussion threads on any website.",
   "type": "module",
   "main": "./dist/bsky-comments.umd.cjs",
