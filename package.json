@@ -1,0 +1,51 @@
+{
+  "name": "bsky-comments",
+  "version": "1.0.0",
+  "description": "A zero-dependency Web Component to embed Bluesky discussion threads on any website.",
+  "type": "module",
+  "main": "./dist/bsky-comments.umd.cjs",
+  "module": "./dist/bsky-comments.js",
+  "types": "./dist/bsky-comments.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/bsky-comments.d.ts",
+      "import": "./dist/bsky-comments.js",
+      "require": "./dist/bsky-comments.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "jsdom": "^28.1.0",
+    "typescript": "^5.2.0",
+    "vite": "^5.0.0",
+    "vite-plugin-dts": "^3.0.0",
+    "vitest": "^4.0.18"
+  },
+  "keywords": [
+    "web-component",
+    "bluesky",
+    "comments",
+    "at-protocol",
+    "social",
+    "embed",
+    "bsky"
+  ],
+  "license": "MIT",
+  "author": "Florian Schepp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florianschepp/bsky-comments.git"
+  },
+  "homepage": "https://github.com/florianschepp/bsky-comments#readme",
+  "bugs": {
+    "url": "https://github.com/florianschepp/bsky-comments/issues"
+  }
+}

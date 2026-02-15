@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bluesky Comments Demo</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #111827;
+        background: #f3f4f6;
+        margin: 0;
+        padding: 0;
+      }
+      h1 { text-align: center; margin-bottom: 2rem; }
+      h2 { margin-top: 3rem; margin-bottom: 1rem; font-size: 1.25rem; color: #374151; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; }
+      
+      .basic-card {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      
+      .blog-page-wrapper-dark {
+        background: #0a0a0a;
+        padding: 2rem;
+      }
+
+      .blog-page-wrapper-light {
+        background: #f3f4f6;
+        padding: 2rem;
+      }
+      
+      .basic-theme bsky-comments .bsky-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; font-size: 0.9em; }
+      .basic-theme bsky-comments .bsky-header a { color: #2563eb; text-decoration: none; }
+      .basic-theme bsky-comments .bsky-header a:hover { text-decoration: underline; }
+      .basic-theme bsky-comments .bsky-reply-link { padding: 0.375rem 0.875rem; border: 1px solid #2563eb; border-radius: 9999px; font-size: 0.8em; }
+      .basic-theme bsky-comments .bsky-comment { 
+        margin-bottom: 0.75rem; 
+        border-left: 2px solid #e5e7eb; 
+        padding-left: 0.75rem; 
+      }
+      .basic-theme bsky-comments .bsky-comment-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem; flex-wrap: wrap; }
+      .basic-theme bsky-comments .bsky-avatar { width: 28px; height: 28px; border-radius: 50%; }
+      .basic-theme bsky-comments .bsky-author { font-weight: 600; text-decoration: none; color: #111827; }
+      .basic-theme bsky-comments .bsky-handle { color: #6b7280; font-size: 0.85em; }
+      .basic-theme bsky-comments .bsky-date { color: #9ca3af; font-size: 0.85em; text-decoration: none; }
+      .basic-theme bsky-comments .bsky-body { color: #374151; margin-top: 0.125rem; }
+      .basic-theme bsky-comments .bsky-actions { font-size: 0.8em; color: #6b7280; margin-top: 0.25rem; display: flex; gap: 0.75rem; }
+      .basic-theme bsky-comments .bsky-replies { margin-top: 0.5rem; margin-left: 0.5rem; }
+
+      /* --- EXAMPLE: BLOG THEME (Dark / Custom) --- */
+      .blog-card {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #171717;
+        color: #e5e5e5;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        border: 1px solid #262626; 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      .blog-theme bsky-comments .bsky-container { margin-top: 0; }
+      
+      .blog-theme bsky-comments .bsky-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      
+      .blog-theme bsky-comments .bsky-header-text {
+        color: #a3a3a3;
+        font-size: 0.875rem;
+      }
+      
+      .blog-theme bsky-comments .bsky-header-text a {
+        color: #38bdf8; 
+        text-decoration: none;
+      }
+      
+      .blog-theme bsky-comments .bsky-header-text a:hover {
+        text-decoration: underline;
+      }
+      
+      .blog-theme bsky-comments .bsky-reply-btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border: 1px solid #38bdf8;
+        border-radius: 9999px;
+        color: #38bdf8;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+      }
+      
+      .blog-theme bsky-comments .bsky-reply-btn:hover {
+        background: #38bdf8;
+        color: #171717;
+      }
+      
+      .blog-theme bsky-comments .bsky-comment { 
+        margin-bottom: 1rem;
+        padding-left: 1rem; 
+        border-left: 2px solid #404040; 
+      }
+
+      .blog-theme bsky-comments .bsky-comment-header { 
+        display: flex; 
+        align-items: center; 
+        gap: 0.5rem; 
+        margin-bottom: 0.25rem; 
+      }
+
+      .blog-theme bsky-comments .bsky-avatar { 
+        width: 2rem; 
+        height: 2rem; 
+        border-radius: 9999px; 
+        flex-shrink: 0;
+      }
+      
+      .blog-theme bsky-comments .bsky-meta {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+      }
+
+      .blog-theme bsky-comments .bsky-author { 
+        font-weight: 700; 
+        color: #f5f5f5; 
+        text-decoration: none; 
+      }
+      .blog-theme bsky-comments .bsky-author:hover { text-decoration: underline; }
+
+      .blog-theme bsky-comments .bsky-handle { 
+        color: #737373; 
+        font-size: 0.875rem; 
+      }
+      
+      .blog-theme bsky-comments .bsky-date { 
+        color: #737373; 
+        font-size: 0.875rem; 
+        text-decoration: none; 
+      }
+
+      .blog-theme bsky-comments .bsky-body { 
+        color: #d4d4d4; 
+        font-size: 0.9375rem; 
+        line-height: 1.5;
+        margin-top: 0.125rem;
+      }
+      
+      .blog-theme bsky-comments .bsky-body p {
+        margin: 0;
+      }
+
+      .blog-theme bsky-comments .bsky-actions { 
+        display: flex; 
+        gap: 1rem; 
+        margin-top: 0.375rem; 
+        font-size: 0.8125rem; 
+        color: #737373; 
+      }
+      
+      .blog-theme bsky-comments .bsky-icon { margin-right: 0.25rem; }
+      
+      .blog-theme bsky-comments .bsky-replies { 
+        margin-top: 0.75rem; 
+        margin-left: 0.5rem;
+      }
+
+      .blog-theme bsky-comments .bsky-loading,
+      .blog-theme bsky-comments .bsky-empty,
+      .blog-theme bsky-comments .bsky-no-replies { 
+        text-align: center; 
+        color: #737373; 
+        padding: 2rem 0; 
+        font-style: italic; 
+      }
+
+      .blog-theme bsky-comments .bsky-container { }
+      
+      .blog-theme bsky-comments .bsky-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .blog-theme bsky-comments .bsky-header-text {
+        color: #a3a3a3;
+        font-size: 0.875rem;
+      }
+      .blog-theme bsky-comments .bsky-header-text a {
+        color: #22d3ee; /* cyan-400 */
+        text-decoration: none;
+      }
+      .blog-theme bsky-comments .bsky-header-text a:hover {
+        text-decoration: underline;
+      }
+      .blog-theme bsky-comments .bsky-reply-btn {
+        padding: 0.5rem 1rem;
+        border: 1px solid #22d3ee;
+        border-radius: 9999px;
+        color: #22d3ee;
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: background 0.2s, color 0.2s;
+      }
+      .blog-theme bsky-comments .bsky-reply-btn:hover {
+        background: #22d3ee;
+        color: #171717;
+      }
+      
+      .blog-theme bsky-comments .bsky-comment { 
+        margin-bottom: 0.75rem;
+        padding-left: 1rem; 
+        border-left: 2px solid #404040; 
+      }
+
+      .blog-theme bsky-comments .bsky-comment-header { 
+        display: flex; 
+        align-items: center; 
+        gap: 0.5rem; 
+        margin-bottom: 0.25rem;
+        flex-wrap: wrap;
+      }
+
+      .blog-theme bsky-comments .bsky-avatar { 
+        width: 2rem; 
+        height: 2rem; 
+        border-radius: 9999px; 
+      }
+
+      .blog-theme bsky-comments .bsky-author { 
+        font-weight: 700; 
+        color: #f5f5f5; 
+        text-decoration: none; 
+      }
+      .blog-theme bsky-comments .bsky-author:hover { color: #22d3ee; }
+
+      .blog-theme bsky-comments .bsky-handle { 
+        color: #737373; 
+        font-size: 0.875rem; 
+      }
+      
+      .blog-theme bsky-comments .bsky-date { 
+        color: #737373; 
+        font-size: 0.875rem; 
+        text-decoration: none; 
+      }
+      .blog-theme bsky-comments .bsky-date::before {
+        content: "·";
+        margin-right: 0.5rem;
+      }
+
+      .blog-theme bsky-comments .bsky-body { 
+        color: #e5e5e5; 
+        font-size: 0.9375rem; 
+        line-height: 1.5;
+      }
+      .blog-theme bsky-comments .bsky-body p {
+        margin: 0;
+      }
+
+      .blog-theme bsky-comments .bsky-actions { 
+        display: flex; 
+        gap: 1rem; 
+        margin-top: 0.375rem; 
+        font-size: 0.875rem; 
+        color: #737373; 
+      }
+      
+      .blog-theme bsky-comments .bsky-icon { 
+        margin-right: 0.25rem; 
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+      }
+      .blog-theme bsky-comments .bsky-icon svg {
+        width: 1em;
+        height: 1em;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
+      .blog-theme bsky-comments .bsky-link { color: #22d3ee; text-decoration: underline; }
+
+      .blog-theme bsky-comments .bsky-replies {
+        margin-top: 0.75rem;
+      }
+
+      .blog-theme bsky-comments .bsky-loading,
+      .blog-theme bsky-comments .bsky-empty { 
+        text-align: center; 
+        color: #737373; 
+        padding: 2rem 0; 
+        font-style: italic; 
+      }
+      
+      .blog-theme bsky-comments .bsky-no-replies {
+        color: #525252;
+        font-size: 0.875rem;
+        padding: 1rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🦋 bsky-comments Demo</h1>
+
+    <div class="blog-page-wrapper-light">
+        <h2>1. Basic Usage (Light Mode)</h2>
+        <p style="margin-bottom: 1rem; color: #666;">Using the <code>post</code> attribute (Web URL) with minimal CSS.</p>
+        <div class="basic-card basic-theme">
+            <!-- Option 1: Just the post URL -->
+            <bsky-comments
+                post="https://bsky.app/profile/scheppening.com/post/3lwt25ajsic2k"
+            ></bsky-comments>
+        </div>
+    </div>
+    <div class="blog-page-wrapper-dark">
+      <h2 style="color: #e5e5e5; border-color: #404040;">2. Advanced Usage (Blog / Dark Mode)</h2>
+      <p style="margin-bottom: 1rem; color: #a3a3a3;">Using the <code style="color: #22d3ee;">uri</code> attribute (AT-URI) with full custom styling to match a dark theme.</p>
+      <div class="blog-card blog-theme">
+      <!-- Option 2: Using the post URI -->
+      <bsky-comments
+        uri="at://did:plc:t527twpbkjjypbfhifhshlvz/app.bsky.feed.post/3lwt25ajsic2k"
+        icon-like='<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+        icon-reply='<svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>'
+      ></bsky-comments>
+      </div>
+    </div>
+
+    <script type="module" src="./src/bsky-comments.ts"></script>
+  </body>
+</html>
