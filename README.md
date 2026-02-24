@@ -1,5 +1,7 @@
 # bsky-comments
 
+https://github.com/user-attachments/assets/4e649daa-670e-4f66-8397-04ef731c9cba
+
 A **zero-dependency Web Component** to embed Bluesky discussion threads on any website.
 
 - **Lightweight:** ~3 kB gzipped. No heavy SDKs.
